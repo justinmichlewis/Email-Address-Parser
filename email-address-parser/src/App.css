@@ -49,6 +49,8 @@
 
 .email-textarea {
   width: 90%;
+  font-size: 0.7em;
+  text-align: center;
 }
 
 #students td {

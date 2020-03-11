@@ -26,6 +26,8 @@ class App extends React.Component {
     console.log("HANDLE SUBMIT");
     if (this.state.input === "") {
       alert("Paste Unformatted Outlook Email Addresses into Textbox");
+    } else if (!this.state.emailChecked && !this.state.nameChecked) {
+      alert("Select at Least 1 Column to Display");
     } else {
       this.parsePeople(this.state.input);
     }
@@ -57,7 +59,6 @@ class App extends React.Component {
           emailArr[i].indexOf(">")
         );
       }
-      //console.log("- Email: ", email);
 
       //Parse name, need to account for 4 cases 1) Name is in format last, first 2) first last 3) email 4) blank
       //Take the left characters from < to strip away email
@@ -96,22 +97,52 @@ class App extends React.Component {
   };
 
   renderTableHeader = () => {
-    let header = Object.keys(this.state.people[0]);
-    return header.map((key, index) => {
-      return <th key={index}>{key.toUpperCase()}</th>;
-    });
+    if (this.state.emailChecked && this.state.nameChecked) {
+      let header = Object.keys(this.state.people[0]);
+      return header.map((key, index) => {
+        return <th key={index}>{key.toUpperCase()}</th>;
+      });
+    } else if (this.state.emailChecked && !this.state.nameChecked) {
+      return <th key="1">EMAIL</th>;
+    } else if (!this.state.emailChecked && this.state.nameChecked) {
+      return <th key="0">NAME</th>;
+    } else if (!this.state.emailChecked && !this.state.nameChecked) {
+      return;
+    }
   };
 
   renderTableData = () => {
-    return this.state.people.map((person, index) => {
-      const { name, email } = person; //destructuring
-      return (
-        <tr key={index}>
-          <td>{name}</td>
-          <td>{email}</td>
-        </tr>
-      );
-    });
+    if (this.state.emailChecked && this.state.nameChecked) {
+      return this.state.people.map((person, index) => {
+        const { name, email } = person; //destructuring
+        return (
+          <tr key={index}>
+            <td>{name}</td>
+            <td>{email}</td>
+          </tr>
+        );
+      });
+    } else if (this.state.emailChecked && !this.state.nameChecked) {
+      return this.state.people.map((person, index) => {
+        const { name, email } = person; //destructuring
+        return (
+          <tr key={index}>
+            <td>{email}</td>
+          </tr>
+        );
+      });
+    } else if (!this.state.emailChecked && this.state.nameChecked) {
+      return this.state.people.map((person, index) => {
+        const { name, email } = person; //destructuring
+        return (
+          <tr key={index}>
+            <td>{name}</td>
+          </tr>
+        );
+      });
+    } else if (!this.state.emailChecked && !this.state.nameChecked) {
+      return;
+    }
   };
 
   render() {
@@ -123,10 +154,10 @@ class App extends React.Component {
             <div>
               <textarea
                 className="email-textarea"
+                htmlFor="textarea"
                 rows="10"
                 cols="100"
                 placeholder="Paste Unformatted Outlook Email Addresses Here"
-                value={this.state.emails}
                 onChange={this.handleChange}
               ></textarea>
             </div>

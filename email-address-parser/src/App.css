@@ -1,0 +1,105 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+.email-textarea {
+  border-radius: 10px;
+}
+
+.myButton {
+  box-shadow: inset 0px 1px 0px 0px #ffffff;
+  background: linear-gradient(to bottom, #f9f9f9 5%, #e9e9e9 100%);
+  background-color: #f9f9f9;
+  border-radius: 6px;
+  border: 1px solid #dcdcdc;
+  display: inline-block;
+  cursor: pointer;
+  color: #666666;
+  font-family: Arial;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 6px 24px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #ffffff;
+  margin: 15px;
+}
+.myButton:hover {
+  background: linear-gradient(to bottom, #e9e9e9 5%, #f9f9f9 100%);
+  background-color: #e9e9e9;
+}
+.myButton:active {
+  position: relative;
+  top: 1px;
+}
+.col-select {
+  margin: 10px;
+  display: inline-block;
+}
+
+#students {
+  text-align: center;
+  border-collapse: collapse;
+  border: 3px solid rgb(218, 218, 218);
+  width: 90%;
+}
+
+.email-textarea {
+  width: 90%;
+}
+
+#students td {
+  border: 1px solid rgb(221, 221, 221);
+  padding: 8px;
+}
+#students th {
+  padding: 8px;
+  border: 1px solid rgb(221, 221, 221);
+  background-color: #2a7d88;
+  color: white;
+  font-size: 1.25em;
+}
+
+#students tr:nth-child(even) {
+  background-color: #c4c4c4;
+  color: black;
+  font-size: 0.75em;
+}
+#students tr:nth-child(odd) {
+  background-color: #e9e7e7;
+  color: black;
+  font-size: 0.75em;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

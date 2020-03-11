@@ -4,12 +4,18 @@ import "./App.css";
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { input: "", people: [{ name: "", email: "" }] };
+    this.state = {
+      input: "",
+      people: [{ name: "", email: "" }],
+      nameChecked: true,
+      emailChecked: true
+    };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderTableHeader = this.renderTableHeader.bind(this);
     this.renderTableData = this.renderTableData.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   handleChange = event => {
@@ -23,6 +29,12 @@ class App extends React.Component {
     } else {
       this.parsePeople(this.state.input);
     }
+  };
+
+  handleClick = e => {
+    e.target.id === "name"
+      ? this.setState({ nameChecked: !this.state.nameChecked })
+      : this.setState({ emailChecked: !this.state.emailChecked });
   };
 
   parsePeople = emails => {
@@ -129,17 +141,19 @@ class App extends React.Component {
                 id="name"
                 name="name"
                 value="name"
-                checked
+                checked={this.state.nameChecked}
+                onClick={this.handleClick}
               />
-              <label for="name">Name </label>
+              <label htmlFor="name">Name </label>
               <input
                 type="checkbox"
                 id="email"
                 name="email"
                 value="email"
-                checked
+                checked={this.state.emailChecked}
+                onClick={this.handleClick}
               />
-              <label for="email">Email</label>
+              <label htmlFor="email">Email</label>
             </div>
           </div>
           <table id="students">

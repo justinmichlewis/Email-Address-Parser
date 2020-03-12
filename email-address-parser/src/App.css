@@ -54,6 +54,7 @@
   background-color: #c4c4c4;
   color: white;
   text-align: center;
+  font-weight: 500;
 }
 .email-textarea {
   width: 90%;

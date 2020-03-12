@@ -192,6 +192,9 @@ class App extends React.Component {
             </tbody>
           </table>
         </header>
+        <div class="footer">
+          <p>PASEO v1 | 2020</p>
+        </div>
       </div>
     );
   }

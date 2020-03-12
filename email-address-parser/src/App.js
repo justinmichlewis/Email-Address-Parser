@@ -47,9 +47,6 @@ class App extends React.Component {
 
     for (let i = 0; i < emailArr.length; i++) {
       //Parse email looking at index of starting < and ending > and taking the substring
-      /* console.log("PERSON");
-      console.log("- UNFORMATTED: ", emailArr[i]);
-      */
       let email = "";
       if (emailArr[i].indexOf("<") === -1) {
         email = emailArr[i];
@@ -82,9 +79,9 @@ class App extends React.Component {
         }
         //Else trim name and assign
         name = name.trim();
-      } /*else {
+      } else {
         name = "NOT AVAILABLE";
-      }*/
+      }
       console.log("- Name: ", name);
       console.log("-------------------");
 
@@ -166,7 +163,7 @@ class App extends React.Component {
                 Parse Emails
               </button>
             </div>
-            <div>
+            <div className="col-select">
               <input
                 type="checkbox"
                 id="name"
@@ -176,6 +173,7 @@ class App extends React.Component {
                 onClick={this.handleClick}
               />
               <label htmlFor="name">Name </label>
+
               <input
                 type="checkbox"
                 id="email"
